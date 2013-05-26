@@ -7,7 +7,7 @@ from pang.lib.world.world import World
 from pang.lib.score.scoreboard import ScoreBoard
 from pang.lib.menu.menu import Menu
 from pang.lib.world.settings import *
-from pang.lib.game.state_manager import StateManager
+from pang.lib.game.states import StateManager
 
 class Game:
     def __init__(self):
