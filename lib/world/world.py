@@ -32,7 +32,7 @@ class World:
         self.sound_library = {}
         self.text_cache = {}
         self.score = 0
-        self.lives = 3        
+        self.lives = 3
         self.font = pygame.font.SysFont(None, MENU_LABEL_FONT_SIZE)        
  
     def process_events(self):
@@ -296,8 +296,7 @@ class World:
             elif re.match(r'music (\S+)', line):
                 match = re.match(r'music (\S+)', line)
                 music = list(map(str, match.groups()))[0]
-                pygame.mixer.music.load('../music/' + music)
-                pygame.mixer.music.play(-1)
+                self.music_path = '../music/' + music
             elif re.match(r'bricktile (\S+)', line):
                 match = re.match(r'bricktile (\S+)', line)
                 tile_name = list(map(str, match.groups()))[0]

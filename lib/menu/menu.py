@@ -12,13 +12,11 @@ class Menu:
         self.selected_color = (255, 0, 0)
         self.color = (255, 255, 255)
         self.selected_option = None
-        self.active = False
         self.title_text = self.font.render(title, True, self.color)
         self.dimmer_rect = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT),
                                           pygame.SRCALPHA, 32)
-        self.dimmer_rect.fill((0, 0, 0, 192))      
-        pygame.mixer.music.load('../music/Menu.wav')
-        pygame.mixer.music.play(-1)
+        self.dimmer_rect.fill((0, 0, 0, 192))
+        self.music_path = '../music/Menu.wav'
         
     def process_events(self):
         key = pygame.key.get_pressed()
@@ -28,7 +26,6 @@ class Menu:
                     self.labels[self.selected_option][2](self.labels[self.selected_option][3])
                 else:
                     self.labels[self.selected_option][2]()
-                self.active = False
         if key[pygame.K_UP]:
             if self.selected_option:
                 self.selected_option -= 1
@@ -73,3 +70,6 @@ class Menu:
             else:
                 screen.blit(value[0], position)
             current_y_pos += max_height + MENU_LABEL_MARGIN
+    
+    def update(self, time_passed):
+        pass
