@@ -216,7 +216,7 @@ class World:
     def get_text(self, string):
         text = self.text_cache.get(string)
         if text == None:
-            text = self.font.render(string, True, (255, 255, 255))
+            text = self.font.render(string, True, (255, 0, 0))
             self.sound_library[string] = text
         return text
     
@@ -246,7 +246,7 @@ class World:
 
     def load_level(self, level_index, scene_only=False, keep_score=True):
         self.active = True
-        file_path = '../levels/' + str(level_index) + '.pang'
+        file_path = '../levels/' + str(level_index) + '.pang'  
         if not os.path.isfile(file_path):
             #show congratulate message and scoreboard if there was a highscore
             return None

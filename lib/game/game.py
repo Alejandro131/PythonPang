@@ -1,6 +1,7 @@
 import pygame
 import os
 import re
+import datetime
 from pygame.locals import *
 from pang.lib.world.world import World
 from pang.lib.score.scoreboard import ScoreBoard
@@ -45,6 +46,7 @@ class Game:
                 lines = list(map(str.rstrip, lines))
                 match = re.match(r'level (\d+)', lines[0])
                 level_id = list(map(int, match.groups()))[0]
+                label += ' - ' + datetime.datetime.fromtimestamp(os.path.getmtime(file_path)).strftime('%H:%M:%S %d.%m.%Y')
                 label += ' - level ' + str(level_id)
             else:
                 label += ' - empty'
@@ -66,6 +68,7 @@ class Game:
                 lines = list(map(str.rstrip, lines))
                 match = re.match(r'level (\d+)', lines[0])
                 level_id = list(map(int, match.groups()))[0]
+                label += ' - ' + datetime.datetime.fromtimestamp(os.path.getmtime(file_path)).strftime('%H:%M:%S %d.%m.%Y')
                 label += ' - level ' + str(level_id)
             else:
                 label += ' - empty'
