@@ -69,6 +69,7 @@ class World:
             self.check_collisions()
             
             if not len(self.balls):
+                self.play_sound('LevelFinish.wav')
                 self.current_level += 1
                 self.load_level(self.current_level)
             
@@ -156,6 +157,7 @@ class World:
     def player_shoot(self):
         if not self.player.is_climbing and \
            self.player.max_hooks > len(self.hooks) and self.player.can_shoot:
+            self.play_sound('HookShoot.wav')
             self.hooks.append(Hook(20, Vec2D(self.player.x + \
                                              self.player.width/2,
                                              self.player.y + \
@@ -182,6 +184,7 @@ class World:
             self.bonuses.append(Bonus(position, bonus_type))
     
     def activate_bonus(self, bonus):
+        self.play_sound('Bonus.wav')
         if bonus.bonus_type == BonusType.stop_time:
             self.balls_paused = True
             self.balls_timer = 3
@@ -297,6 +300,8 @@ class World:
                 match = re.match(r'music (\S+)', line)
                 music = list(map(str, match.groups()))[0]
                 self.music_path = '../music/' + music
+                pygame.mixer.music.load(self.music_path)
+                pygame.mixer.music.play(-1)                
             elif re.match(r'bricktile (\S+)', line):
                 match = re.match(r'bricktile (\S+)', line)
                 tile_name = list(map(str, match.groups()))[0]
@@ -324,8 +329,8 @@ class World:
                 self.player.hook_type = hook_type
                 self.player.max_hooks = max_hooks
                 self.player.force = Vec2D(force_x, force_y)
-            elif re.match(r'bonus pos (\d+), (\d+) bonustype (\d+) duration (\d+.\d+) force (-?\d+), (-?\d+) fall (\d+) tokill (\d+)', line):
-                match = re.match(r'bonus pos (\d+), (\d+) bonustype (\d+) duration (\d+.\d+) force (-?\d+), (-?\d+) fall (\d+) tokill (\d+)', line)
+            elif re.match(r'bonus pos (\d+), (\d+) bonustype (\d+) duration (\d+.\d+|\d+) force (-?\d+), (-?\d+) fall (\d+) tokill (\d+)', line):
+                match = re.match(r'bonus pos (\d+), (\d+) bonustype (\d+) duration (\d+.\d+|\d+) force (-?\d+), (-?\d+) fall (\d+) tokill (\d+)', line)
                 pos_x, pos_y, bonus_type, duration, force_x, force_y, fall, to_kill = list(map(float, match.groups()))
                 bonus = Bonus(Vec2D(pos_x, pos_y), bonus_type)
                 bonus.timer = duration
@@ -333,16 +338,16 @@ class World:
                 bonus.fall = bool(fall)
                 bonus.to_kill = bool(to_kill)
                 self.bonuses.append(bonus)
-            elif re.match(r'hook pos (\d+), (\d+) hooktype (\d+) height (\d+) duration (\d+.\d+) expand (\d+) tokill (\d+)', line):
-                match = re.match(r'hook pos (\d+), (\d+) hooktype (\d+) height (\d+) duration (\d+.\d+) expand (\d+) tokill (\d+)', line)
+            elif re.match(r'hook pos (\d+), (\d+) hooktype (\d+) height (\d+) duration (\d+.\d+|\d+) expand (\d+) tokill (\d+)', line):
+                match = re.match(r'hook pos (\d+), (\d+) hooktype (\d+) height (\d+) duration (\d+.\d+|\d+) expand (\d+) tokill (\d+)', line)
                 pos_x, pos_y, hook_type, height, duration, expand, to_kill = list(map(float, match.groups()))
                 hook = Hook(height, Vec2D(pos_x, pos_y), hook_type)
                 hook.timer = duration
                 hook.expand = bool(expand)
                 hook.to_kill = bool(to_kill)
                 self.hooks.append(hook)                
-            elif re.match(r'world ballstimer (\d+.\d+) score (\d+) lives (\d+)', line):
-                match = re.match(r'world ballstimer (\d+.\d+) score (\d+) lives (\d+)', line)
+            elif re.match(r'world ballstimer (\d+.\d+|\d+) score (\d+) lives (\d+)', line):
+                match = re.match(r'world ballstimer (\d+.\d+|\d+) score (\d+) lives (\d+)', line)
                 balls_timer, score, lives = list(map(float, match.groups()))
                 self.balls_timer = balls_timer
                 if balls_timer > 0:
