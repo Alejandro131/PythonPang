@@ -324,8 +324,8 @@ class World:
                 self.player.hook_type = hook_type
                 self.player.max_hooks = max_hooks
                 self.player.force = Vec2D(force_x, force_y)
-            elif re.match(r'bonus pos (\d+), (\d+) bonustype (\d+) duration (\d+) force (-?\d+), (-?\d+) fall (\d+) tokill (\d+)', line):
-                match = re.match(r'bonus pos (\d+), (\d+) bonustype (\d+) duration (\d+) force (-?\d+), (-?\d+) fall (\d+) tokill (\d+)', line)
+            elif re.match(r'bonus pos (\d+), (\d+) bonustype (\d+) duration (\d+.\d+) force (-?\d+), (-?\d+) fall (\d+) tokill (\d+)', line):
+                match = re.match(r'bonus pos (\d+), (\d+) bonustype (\d+) duration (\d+.\d+) force (-?\d+), (-?\d+) fall (\d+) tokill (\d+)', line)
                 pos_x, pos_y, bonus_type, duration, force_x, force_y, fall, to_kill = list(map(float, match.groups()))
                 bonus = Bonus(Vec2D(pos_x, pos_y), bonus_type)
                 bonus.timer = duration
@@ -333,16 +333,16 @@ class World:
                 bonus.fall = bool(fall)
                 bonus.to_kill = bool(to_kill)
                 self.bonuses.append(bonus)
-            elif re.match(r'hook pos (\d+), (\d+) hooktype (\d+) height (\d+) duration (\d+) expand (\d+) tokill (\d+)', line):
-                match = re.match(r'hook pos (\d+), (\d+) hooktype (\d+) height (\d+) duration (\d+) expand (\d+) tokill (\d+)', line)
+            elif re.match(r'hook pos (\d+), (\d+) hooktype (\d+) height (\d+) duration (\d+.\d+) expand (\d+) tokill (\d+)', line):
+                match = re.match(r'hook pos (\d+), (\d+) hooktype (\d+) height (\d+) duration (\d+.\d+) expand (\d+) tokill (\d+)', line)
                 pos_x, pos_y, hook_type, height, duration, expand, to_kill = list(map(float, match.groups()))
                 hook = Hook(height, Vec2D(pos_x, pos_y), hook_type)
                 hook.timer = duration
                 hook.expand = bool(expand)
                 hook.to_kill = bool(to_kill)
                 self.hooks.append(hook)                
-            elif re.match(r'world ballstimer (\d+) score (\d+) lives (\d+)', line):
-                match = re.match(r'world ballstimer (\d+) score (\d+) lives (\d+)', line)
+            elif re.match(r'world ballstimer (\d+.\d+) score (\d+) lives (\d+)', line):
+                match = re.match(r'world ballstimer (\d+.\d+) score (\d+) lives (\d+)', line)
                 balls_timer, score, lives = list(map(float, match.groups()))
                 self.balls_timer = balls_timer
                 if balls_timer > 0:
@@ -386,9 +386,3 @@ class World:
         file.write('world ballstimer '+str(self.balls_timer)+\
                 ' score '+str(self.score)+\
                 ' lives '+str(self.lives)+'\n')
-
-'''    def load(file):
-        return World(width, height, apples, wall, snake)
-    load = staticmethod(load)
-    
-    world = World.load('1.pang')'''
