@@ -74,6 +74,7 @@ class World:
                 self.current_level += 1
                 if not self.load_level(self.current_level):
                     self.game_over = True
+                    self.current_level -= 1
             
         else:
             self.pause_remaining -= time_passed

@@ -142,6 +142,10 @@ class Game:
             
             for event in pygame.event.get():
                 self.process_event(event)
+                if not len(self.states.states):
+                    break
+            if not len(self.states.states):
+                break                
             
             self.update(time_passed / 1000.)
 

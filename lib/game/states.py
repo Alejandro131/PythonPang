@@ -26,9 +26,10 @@ class StateManager:
         self.states.append(state)
     
     def pop(self):
-        if self.states[-2].music_path != self.states[-1].music_path:
-            pygame.mixer.music.load(self.states[-2].music_path)
-            pygame.mixer.music.play(-1)              
+        if len(self.states) > 1:
+            if self.states[-2].music_path != self.states[-1].music_path:
+                pygame.mixer.music.load(self.states[-2].music_path)
+                pygame.mixer.music.play(-1)              
 
         self.states.pop()
     
@@ -39,7 +40,7 @@ class StateManager:
             if type(self.states[-1]) == World:
                 self.main_menu_func()
             else:
-                self.pop()        
+                self.pop()
     
     def draw(self, screen):
         world = self.get_world()
