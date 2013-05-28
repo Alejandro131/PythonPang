@@ -16,7 +16,7 @@ class StateManager:
             pygame.mixer.music.play(-1)
         else:
             if len(self.states):
-                if type(state) != type(self.states[-1]):
+                if state.music_path != self.states[-1].music_path:
                     pygame.mixer.music.load(state.music_path)
                     pygame.mixer.music.play(-1)
             else:
@@ -26,14 +26,14 @@ class StateManager:
         self.states.append(state)
     
     def pop(self):
-        if type(self.states[-2]) != type(self.states[-1]):
+        if self.states[-2].music_path != self.states[-1].music_path:
             pygame.mixer.music.load(self.states[-2].music_path)
             pygame.mixer.music.play(-1)              
 
         self.states.pop()
     
-    def process_events(self):        
-        self.states[-1].process_events()
+    def process_event(self, event):        
+        self.states[-1].process_event(event)
         key = pygame.key.get_pressed()
         if key[pygame.K_ESCAPE]:
             if type(self.states[-1]) == World:

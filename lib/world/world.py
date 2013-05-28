@@ -33,9 +33,10 @@ class World:
         self.text_cache = {}
         self.score = 0
         self.lives = 3
-        self.font = pygame.font.SysFont(None, MENU_LABEL_FONT_SIZE)        
+        self.font = pygame.font.SysFont(None, MENU_LABEL_FONT_SIZE)
+        self.game_over = False
  
-    def process_events(self):
+    def process_event(self, event):
         key = pygame.key.get_pressed()
         direction = Vec2D()
         if key[pygame.K_LEFT]:
@@ -71,7 +72,8 @@ class World:
             if not len(self.balls):
                 self.play_sound('LevelFinish.wav')
                 self.current_level += 1
-                self.load_level(self.current_level)
+                if not self.load_level(self.current_level):
+                    self.game_over = True
             
         else:
             self.pause_remaining -= time_passed
@@ -142,17 +144,15 @@ class World:
             for obstacle in self.obstacles:
                 box_to_box(bonus, obstacle, bonus=True)      
 
-        '''for ball in self.balls:
+        for ball in self.balls:
             if ball_to_box(ball, self.player):
                 self.lives -= 1
                 if self.lives:
-                    #load level again
                     self.load_level(self.current_level)
                     break
                 else:
-                    #delete player
-                    #show end game message and add to scoreboard if score can fit top 10
-                    break'''
+                    self.game_over = True
+                    break
         
     def player_shoot(self):
         if not self.player.is_climbing and \
@@ -220,7 +220,7 @@ class World:
         text = self.text_cache.get(string)
         if text == None:
             text = self.font.render(string, True, (255, 0, 0))
-            self.sound_library[string] = text
+            self.text_cache[string] = text
         return text
     
     def draw(self, screen):
@@ -251,7 +251,6 @@ class World:
         self.active = True
         file_path = '../levels/' + str(level_index) + '.pang'  
         if not os.path.isfile(file_path):
-            #show congratulate message and scoreboard if there was a highscore
             return None
         self.balls = []
         self.bonuses = []

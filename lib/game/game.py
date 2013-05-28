@@ -21,12 +21,20 @@ class Game:
         self.enable_main_menu()
         
         self.running = True
+        
+    def enable_score_board(self):
+        score_board = ScoreBoard()
+        score_board.add_option('Clear Scores', score_board.clear_scores)
+        score_board.add_option('Back', self.states.pop)
+        
+        self.states.push(score_board)
 
     def enable_main_menu(self):
         menu = Menu('Pang')
         menu.add_option('New Game', self.start_game)
         menu.add_option('Load Game', self.enable_load_menu)
         menu.add_option('Save Game', self.enable_save_menu)
+        menu.add_option('High Scores', self.enable_score_board)
         menu.add_option('Exit', self.close)
                 
         self.states.push(menu)        
@@ -96,13 +104,26 @@ class Game:
     def close(self):
         self.running = False
          
-    def process_events(self, event):
+    def process_event(self, event):
         if event.type == pygame.QUIT:
             self.running = False
-        self.states.process_events()     
+        self.states.process_event(event)     
 
     def update(self, time_passed):
         self.states.update(time_passed)
+        world = self.states.get_world()
+        if world:
+            if world.game_over:
+                score_board = ScoreBoard()
+                
+                score_board.add_option('Clear Scores', score_board.clear_scores)
+                score_board.add_option('Back', self.states.pop)
+                
+                score_board.check_score(world.score, world.current_level)
+                
+                self.states.states = []
+                self.enable_main_menu()
+                self.states.push(score_board)
 
     def render(self):
         self.screen.fill((0, 0, 0))
@@ -120,7 +141,7 @@ class Game:
             time_passed *= GAME_SPEED
             
             for event in pygame.event.get():
-                self.process_events(event)
+                self.process_event(event)
             
             self.update(time_passed / 1000.)
 

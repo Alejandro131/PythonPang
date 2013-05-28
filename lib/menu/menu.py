@@ -21,7 +21,7 @@ class Menu:
         self.dimmer_rect.fill((0, 0, 0, 192))
         self.music_path = '../music/Menu.wav'
         
-    def process_events(self):
+    def process_event(self, event):
         key = pygame.key.get_pressed()
         if key[pygame.K_RETURN]: #enter -> invoke the function attached to the currently selected label
             if self.labels[self.selected_option][2]:
@@ -60,7 +60,8 @@ class Menu:
                 max_height = text_height
         current_y_pos = (SCREEN_HEIGHT - (items * max_height + (items - 1) * \
                                           MENU_LABEL_MARGIN))//2
-        current_y_pos += self.y_position
+        if self.y_position:
+            current_y_pos = self.y_position
         if self.title:
             position = Vec2D((SCREEN_WIDTH - self.title_text.get_rect().width)//2, 
                                          current_y_pos + (max_height - \
