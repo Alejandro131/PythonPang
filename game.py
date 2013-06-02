@@ -1,13 +1,13 @@
-import pygame
 import os
 import re
 from datetime import datetime
+import pygame
 from pygame.locals import *
-from pang.lib.world.world import World
-from pang.lib.score.scoreboard import ScoreBoard
-from pang.lib.menu.menu import Menu
-from pang.lib.world.settings import *
-from pang.lib.game.states import StateManager
+from pang.world import World
+from pang.scoreboard import ScoreBoard
+from pang.menu import Menu
+from pang.settings import *
+from pang.states import StateManager
 
 
 class Game:
@@ -41,7 +41,7 @@ class Game:
     def enable_save_menu(self):
         save_menu = Menu('Save Game')
         for save_index in range(1, 11):
-            file_path = '../save/' + str(save_index) + '.save'
+            file_path = 'assets/save/' + str(save_index) + '.save'
             label = str(save_index)
             if os.path.isfile(file_path):
                 file = open(file_path, 'r')
@@ -64,7 +64,7 @@ class Game:
     def enable_load_menu(self):
         load_menu = Menu('Load Game')
         for load_index in range(1, 11):
-            file_path = '../save/' + str(load_index) + '.save'
+            file_path = 'assets/save/' + str(load_index) + '.save'
             label = str(load_index)
             if os.path.isfile(file_path):
                 file = open(file_path, 'r')

@@ -1,8 +1,8 @@
 import unittest
-from pang.lib.world.ball import Ball
-from pang.lib.world.vec2d import Vec2D
-from pang.lib.world.collision import *
-from pang.lib.world.obstacle import Obstacle
+from pang.ball import Ball
+from pang.vec2d import Vec2D
+from pang.collision import *
+from pang.obstacle import Obstacle
 
 
 class BallToBoxCollisionTest(unittest.TestCase):

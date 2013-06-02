@@ -1,8 +1,8 @@
-from pang.lib.world.hook import HookType
-from pang.lib.world.settings import *
-from pang.lib.world.vec2d import Vec2D
-from pang.lib.world.object2d import Object2D
 import pygame
+from pang.hook import HookType
+from pang.settings import *
+from pang.vec2d import Vec2D
+from pang.object2d import Object2D
 
 
 class Player(Object2D):
@@ -12,7 +12,7 @@ class Player(Object2D):
         self.is_climbing = False
         self.hook_type = HookType.rope
         self.max_hooks = 1
-        self.image = pygame.image.load('../graphics/Player.png')
+        self.image = pygame.image.load('assets/gfx/Player.png')
         self.sheet_size = Vec2D(self.image.get_width(),
                                 self.image.get_height())
         Object2D.__init__(self, Vec2D(self.image.get_width()/4,
@@ -61,8 +61,8 @@ class Player(Object2D):
                 self.position += (0, (self.direction.y * time_passed *
                                       PLAYER_SPEED))
                 self.is_climbing = True
-                self.frame_right = 0  # с цел ако отидеш на стълба в друг фрейм
-                self.frame_left = 0  # да се върнеш на основния
+                self.frame_right = 0
+                self.frame_left = 0
         else:
             self.is_climbing = False
         if self.y > SCREEN_HEIGHT - self.height:

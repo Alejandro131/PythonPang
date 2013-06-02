@@ -1,7 +1,7 @@
-from pang.lib.world.settings import *
-from pang.lib.world.vec2d import Vec2D
-from pang.lib.world.hook import HookType
 import math
+from pang.settings import *
+from pang.vec2d import Vec2D
+from pang.hook import HookType
 
 
 def calc_angle(point):

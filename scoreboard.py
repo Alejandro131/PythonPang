@@ -1,15 +1,15 @@
-import pygame
 import re
+import pygame
 from pygame.locals import *
-from pang.lib.menu.menu import Menu
-from pang.lib.world.settings import *
+from pang.menu import Menu
+from pang.settings import *
 
 
 class ScoreBoard:
 
     def __init__(self):
         self.menu = Menu(y_position=580)
-        self.music_path = '../music/Menu.wav'
+        self.music_path = 'assets/music/Menu.wav'
         self.adding_score = False
         self.records = []
         self.load_scores()
@@ -90,7 +90,7 @@ class ScoreBoard:
         self.save_scores()
 
     def load_scores(self):
-        file_path = '../highscore/scores.pang'
+        file_path = 'assets/highscore/scores.pang'
         if not os.path.isfile(file_path):
             return None
         file = open(file_path, 'r')
@@ -105,7 +105,7 @@ class ScoreBoard:
                 self.records.append((name, score, level))
 
     def save_scores(self):
-        file_path = '../highscore/scores.pang'
+        file_path = 'assets/highscore/scores.pang'
         file = open(file_path, 'w')
         for record in self.records:
             file.write(str(record[0]) + ' ' + str(record[1]) + ' ' +

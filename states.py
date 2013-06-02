@@ -1,9 +1,9 @@
-from pang.lib.world.world import World
-from pang.lib.score.scoreboard import ScoreBoard
-from pang.lib.menu.menu import Menu
 import pygame
 from pygame.locals import *
-from pang.lib.world.settings import *
+from pang.world import World
+from pang.scoreboard import ScoreBoard
+from pang.menu import Menu
+from pang.settings import *
 
 
 class StateManager:

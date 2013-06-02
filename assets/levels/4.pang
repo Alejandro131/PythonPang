@@ -1,0 +1,13 @@
+background LevelSwamp.png
+
+bricktile BrickTile.png
+
+music Swamp.mp3
+
+player pos 500, 643
+
+ball radius 40 pos 100, 100 force 50, 0
+ball radius 20 pos 250, 100 force 50, 0
+ball radius 10 pos 400, 100 force 50, 0
+ball radius 20 pos 550, 100 force 50, 0
+ball radius 40 pos 700, 100 force 50, 0

@@ -1,8 +1,8 @@
 import pygame
 from pygame.locals import *
-from pang.lib.world.settings import *
-from pang.lib.world.vec2d import Vec2D
-from pang.lib.world.object2d import Object2D
+from pang.settings import *
+from pang.vec2d import Vec2D
+from pang.object2d import Object2D
 
 
 class BonusType:
@@ -21,16 +21,16 @@ class Bonus(Object2D):
     def __init__(self, position, bonus_type):
         self.bonus_type = bonus_type
         if bonus_type == BonusType.stop_time:
-            self.image = pygame.image.load('../graphics/BonusStopTime.png')
+            self.image = pygame.image.load('assets/gfx/BonusStopTime.png')
         elif bonus_type == BonusType.extra_hook:
-            self.image = pygame.image.load('../graphics/BonusExtraHook.png')
+            self.image = pygame.image.load('assets/gfx/BonusExtraHook.png')
         elif bonus_type == BonusType.chain_hook:
-            self.image = pygame.image.load('../graphics/BonusChainHook.png')
+            self.image = pygame.image.load('assets/gfx/BonusChainHook.png')
         elif bonus_type == BonusType.break_balls_once:
-            self.image = pygame.image.load('../graphics/BonusBreak' +
+            self.image = pygame.image.load('assets/gfx/BonusBreak' +
                                            'BallsOnce.png')
         elif bonus_type == BonusType.break_balls_max:
-            self.image = pygame.image.load('../graphics/BonusBreak' +
+            self.image = pygame.image.load('assets/gfx/BonusBreak' +
                                            'BallsMax.png')
         Object2D.__init__(self, Vec2D(self.image.get_size()), position)
         self.force = Vec2D()

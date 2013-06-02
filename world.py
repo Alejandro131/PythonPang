@@ -1,18 +1,18 @@
 import re
 import os
-import pygame
 import random
+import pygame
 from pygame.locals import *
-from pang.lib.world.settings import *
-from pang.lib.world.obstacle import Obstacle
-from pang.lib.world.player import Player
-from pang.lib.world.bonus import *
-from pang.lib.world.ball import Ball
-from pang.lib.world.collision import *
-from pang.lib.world.hook import *
-from pang.lib.world.ladder import Ladder
-from pang.lib.world.vec2d import Vec2D
-from pang.lib.world.object2d import Object2D
+from pang.settings import *
+from pang.obstacle import Obstacle
+from pang.player import Player
+from pang.bonus import *
+from pang.ball import Ball
+from pang.collision import *
+from pang.hook import *
+from pang.ladder import Ladder
+from pang.vec2d import Vec2D
+from pang.object2d import Object2D
 
 
 class World:
@@ -208,7 +208,7 @@ class World:
     def play_sound(self, file_name):
         sound = self.sound_library.get(file_name)
         if sound is None:
-            sound = pygame.mixer.Sound('../sfx/' + file_name)
+            sound = pygame.mixer.Sound('assets/sfx/' + file_name)
             self.sound_library[file_name] = sound
         sound.play()
 
@@ -245,7 +245,7 @@ class World:
 
     def load_level(self, level_index, scene_only=False, keep_score=True):
         self.active = True
-        file_path = '../levels/' + str(level_index) + '.pang'
+        file_path = 'assets/levels/' + str(level_index) + '.pang'
         if not os.path.isfile(file_path):
             return None
         self.balls = []
@@ -267,7 +267,7 @@ class World:
         lines = list(map(str.rstrip, lines))
         match = re.match(r'background (\S+)', lines[0])
         background = list(map(str, match.groups()))[0]
-        self.background = pygame.image.load('../graphics/' + background)
+        self.background = pygame.image.load('assets/gfx/' + background)
         tile_name = ''
         ball_regex = (r'ball radius (\d+) pos (\d+), ' +
                       '(\d+) force (-?\d+), (-?\d+)')
@@ -296,7 +296,7 @@ class World:
             elif re.match(r'music (\S+)', line):
                 match = re.match(r'music (\S+)', line)
                 music = list(map(str, match.groups()))[0]
-                self.music_path = '../music/' + music
+                self.music_path = 'assets/music/' + music
                 pygame.mixer.music.load(self.music_path)
                 pygame.mixer.music.play(-1)
             elif re.match(r'bricktile (\S+)', line):
@@ -305,7 +305,7 @@ class World:
         return True
 
     def load_game(self, file_name):
-        file_path = '../save/' + str(file_name) + '.save'
+        file_path = 'assets/save/' + str(file_name) + '.save'
         if not os.path.isfile(file_path):
             return None
         file = open(file_path, 'r')
@@ -386,7 +386,7 @@ class World:
     def save_game(self, file_name):
         if not self.active:
             return None
-        file_path = '../save/' + str(file_name) + '.save'
+        file_path = 'assets/save/' + str(file_name) + '.save'
         file = open(file_path, 'w')
         file.write('level ' + str(self.current_level) + '\n')
         for ball in self.balls:

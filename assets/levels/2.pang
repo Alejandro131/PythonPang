@@ -1,0 +1,7 @@
+background LevelSnow.png
+
+music Snow.mp3
+
+player pos 500, 643
+
+ball radius 40 pos 600, 100 force 50, 0

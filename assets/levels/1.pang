@@ -1,0 +1,7 @@
+background LevelSwamp.png
+
+music Swamp.mp3
+
+player pos 500, 643
+
+ball radius 20 pos 100, 100 force 50, 0

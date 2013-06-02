@@ -1,8 +1,8 @@
 import pygame
 from pygame.locals import *
-from pang.lib.world.settings import *
-from pang.lib.world.vec2d import Vec2D
-from pang.lib.world.object2d import Object2D
+from pang.settings import *
+from pang.vec2d import Vec2D
+from pang.object2d import Object2D
 
 
 class Ball(Object2D):
@@ -17,7 +17,7 @@ class Ball(Object2D):
             self.falling = False
         self.max_height = SCREEN_HEIGHT - 150 - radius*4
         if load_image:
-            self.image = pygame.image.load('../Graphics/' + str(radius) +
+            self.image = pygame.image.load('assets/gfx/' + str(radius) +
                                            '.png')
 
     def update(self, time_passed):

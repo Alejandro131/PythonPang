@@ -1,0 +1,8 @@
+background LevelDesert.png
+
+music Desert.mp3
+
+player pos 500, 643
+
+ball radius 80 pos 800, 100 force 50, 0
+ball radius 80 pos 200, 100 force -50, 0

@@ -1,0 +1,10 @@
+level 5
+ball radius 40 pos 120, 481 force 50, -132
+ball radius 20 pos 232, 484 force 50, -47
+ball radius 10 pos 522, 667 force 50, 171
+ball radius 5 pos 907, 595 force -50, 108
+ball radius 5 pos 821, 551 force 50, -60
+ball radius 40 pos 810, 415 force -50, 61
+ball radius 40 pos 85, 441 force -50, 93
+player pos 302, 343 hooktype 0 maxhooks 1 force 0, 0
+world ballstimer 0 score 1760 lives 1

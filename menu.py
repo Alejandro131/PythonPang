@@ -1,8 +1,8 @@
+from collections import OrderedDict
 import pygame
 from pygame.locals import *
-from collections import OrderedDict
-from pang.lib.world.settings import *
-from pang.lib.world.vec2d import Vec2D
+from pang.settings import *
+from pang.vec2d import Vec2D
 
 
 class Menu:
@@ -18,7 +18,7 @@ class Menu:
         if self.title:
             self.title_text = self.font.render(title, True, self.color)
             self.title_position = Vec2D()
-        self.music_path = '../music/Menu.wav'
+        self.music_path = 'assets/music/Menu.wav'
         self.positions = []
 
     def process_event(self, event):

@@ -2,8 +2,6 @@
 *.mp3
 *.wav
 *.png
-*.save
-*.pang
 
 # C extensions
 *.so

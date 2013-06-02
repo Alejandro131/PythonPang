@@ -1,8 +1,8 @@
 import pygame
 from pygame.locals import *
-from pang.lib.world.settings import *
-from pang.lib.world.vec2d import Vec2D
-from pang.lib.world.object2d import Object2D
+from pang.settings import *
+from pang.vec2d import Vec2D
+from pang.object2d import Object2D
 
 
 class HookType:
@@ -16,9 +16,9 @@ class Hook(Object2D):
         self.hook_type = hook_type
         self.to_kill = False
         if hook_type == HookType.rope:
-            self.image = pygame.image.load('../graphics/HookRope.png')
+            self.image = pygame.image.load('assets/gfx/HookRope.png')
         elif hook_type == HookType.chain:
-            self.image = pygame.image.load('../graphics/HookChain.png')
+            self.image = pygame.image.load('assets/gfx/HookChain.png')
         Object2D.__init__(self, Vec2D(self.image.get_width(), height),
                           position)
         self.expand = True
