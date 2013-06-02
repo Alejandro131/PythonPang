@@ -350,8 +350,8 @@ class World:
                 duration = float(match.group(4))
                 force_x = int(match.group(5))
                 force_y = int(match.group(6))
-                fall = bool(match.group(7))
-                to_kill = bool(match.group(8))
+                fall = bool(int(match.group(7)))
+                to_kill = bool(int(match.group(8)))
                 bonus = Bonus(Vec2D(pos_x, pos_y), bonus_type)
                 bonus.timer = duration
                 bonus.force = Vec2D(force_x, force_y)
@@ -365,12 +365,11 @@ class World:
                 hook_type = int(match.group(3))
                 height = int(match.group(4))
                 duration = float(match.group(5))
-                expand = bool(match.group(6))
-                to_kill = bool(match.group(7))
+                expand = bool(int(match.group(6)))
+                to_kill = bool(int(match.group(7)))
                 hook = Hook(height, Vec2D(pos_x, pos_y), hook_type)
                 hook.timer = duration
                 hook.expand = expand
-                print(expand)
                 hook.to_kill = to_kill
                 self.hooks.append(hook)
             elif re.match(world_regex, line):
