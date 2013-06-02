@@ -19,16 +19,16 @@ class BallToBoxCollisionTest(unittest.TestCase):
         self.results.append((Vec2D(400, 0), Vec2D(0, -1)))
         self.balls.append(Ball(150, Vec2D(400, 100), Vec2D(-50, 50), False))
         self.results.append((Vec2D(400, 0), Vec2D(0, -1)))
-        self.balls.append(Ball(150, Vec2D(450, 200-50*(3**.5)),
+        self.balls.append(Ball(150, Vec2D(450, 200 - 50*(3**.5)),
                                Vec2D(50, 50), False))
         self.results.append((Vec2D(450, 3.76), Vec2D(0, -1)))
-        self.balls.append(Ball(150, Vec2D(450, 200-50*(3**.5)),
+        self.balls.append(Ball(150, Vec2D(450, 200 - 50*(3**.5)),
                                Vec2D(-50, 50), False))
         self.results.append((Vec2D(450, 3.76), Vec2D(0, -1)))
-        self.balls.append(Ball(150, Vec2D(400+50*(3**.5), 150),
+        self.balls.append(Ball(150, Vec2D(400 + 50*(3**.5), 150),
                                Vec2D(-50, 50), False))
         self.results.append((Vec2D(596.24, 150), Vec2D(-1, 0)))
-        self.balls.append(Ball(150, Vec2D(400+50*(3**.5), 150),
+        self.balls.append(Ball(150, Vec2D(400 + 50*(3**.5), 150),
                                Vec2D(-50, -50), False))
         self.results.append((Vec2D(596.24, 150), Vec2D(-1, 0)))
         self.balls.append(Ball(150, Vec2D(500, 200), Vec2D(-50, 50), False))
@@ -39,16 +39,16 @@ class BallToBoxCollisionTest(unittest.TestCase):
         self.results.append((Vec2D(600, 400), Vec2D(-1, 0)))
         self.balls.append(Ball(150, Vec2D(500, 400), Vec2D(-50, -50), False))
         self.results.append((Vec2D(600, 400), Vec2D(-1, 0)))
-        self.balls.append(Ball(150, Vec2D(400+50*(3**.5), 450),
+        self.balls.append(Ball(150, Vec2D(400 + 50*(3**.5), 450),
                                Vec2D(-50, 50), False))
         self.results.append((Vec2D(596.24, 450), Vec2D(-1, 0)))
-        self.balls.append(Ball(150, Vec2D(400+50*(3**.5), 450),
+        self.balls.append(Ball(150, Vec2D(400 + 50*(3**.5), 450),
                                Vec2D(-50, -50), False))
         self.results.append((Vec2D(596.24, 450), Vec2D(-1, 0)))
-        self.balls.append(Ball(150, Vec2D(450, 400+50*(3**.5)),
+        self.balls.append(Ball(150, Vec2D(450, 400 + 50*(3**.5)),
                                Vec2D(50, -50), False))
         self.results.append((Vec2D(450, 596.24), Vec2D(0, -1)))
-        self.balls.append(Ball(150, Vec2D(450, 400+50*(3**.5)),
+        self.balls.append(Ball(150, Vec2D(450, 400 + 50*(3**.5)),
                                Vec2D(-50, -50), False))
         self.results.append((Vec2D(450, 596.24), Vec2D(0, -1)))
         self.balls.append(Ball(150, Vec2D(400, 500), Vec2D(50, -50), False))
@@ -59,16 +59,16 @@ class BallToBoxCollisionTest(unittest.TestCase):
         self.results.append((Vec2D(200, 600), Vec2D(0, -1)))
         self.balls.append(Ball(150, Vec2D(200, 500), Vec2D(-50, -50), False))
         self.results.append((Vec2D(200, 600), Vec2D(0, -1)))
-        self.balls.append(Ball(150, Vec2D(150, 400+50*(3**.5)),
+        self.balls.append(Ball(150, Vec2D(150, 400 + 50*(3**.5)),
                                Vec2D(50, -50), False))
         self.results.append((Vec2D(150, 596.24), Vec2D(0, -1)))
-        self.balls.append(Ball(150, Vec2D(150, 400+50*(3**.5)),
+        self.balls.append(Ball(150, Vec2D(150, 400 + 50*(3**.5)),
                                Vec2D(-50, -50), False))
         self.results.append((Vec2D(150, 596.24), Vec2D(0, -1)))
-        self.balls.append(Ball(150, Vec2D(200-50*(3**.5), 450),
+        self.balls.append(Ball(150, Vec2D(200 - 50*(3**.5), 450),
                                Vec2D(50, -50), False))
         self.results.append((Vec2D(3.76, 450), Vec2D(-1, 0)))
-        self.balls.append(Ball(150, Vec2D(200-50*(3**.5), 450),
+        self.balls.append(Ball(150, Vec2D(200 - 50*(3**.5), 450),
                                Vec2D(50, 50), False))
         self.results.append((Vec2D(3.76, 450), Vec2D(-1, 0)))
         self.balls.append(Ball(150, Vec2D(100, 400), Vec2D(50, -50), False))
@@ -79,16 +79,16 @@ class BallToBoxCollisionTest(unittest.TestCase):
         self.results.append((Vec2D(0, 200), Vec2D(-1, 0)))
         self.balls.append(Ball(150, Vec2D(100, 200), Vec2D(50, 50), False))
         self.results.append((Vec2D(0, 200), Vec2D(-1, 0)))
-        self.balls.append(Ball(150, Vec2D(200-50*(3**.5), 150),
+        self.balls.append(Ball(150, Vec2D(200 - 50*(3**.5), 150),
                                Vec2D(50, -50), False))
         self.results.append((Vec2D(3.76, 150), Vec2D(-1, 0)))
-        self.balls.append(Ball(150, Vec2D(200-50*(3**.5), 150),
+        self.balls.append(Ball(150, Vec2D(200 - 50*(3**.5), 150),
                                Vec2D(50, 50), False))
         self.results.append((Vec2D(3.76, 150), Vec2D(-1, 0)))
-        self.balls.append(Ball(150, Vec2D(150, 200-50*(3**.5)),
+        self.balls.append(Ball(150, Vec2D(150, 200 - 50*(3**.5)),
                                Vec2D(50, 50), False))
         self.results.append((Vec2D(150, 3.76), Vec2D(0, -1)))
-        self.balls.append(Ball(150, Vec2D(150, 200-50*(3**.5)),
+        self.balls.append(Ball(150, Vec2D(150, 200 - 50*(3**.5)),
                                Vec2D(-50, 50), False))
         self.results.append((Vec2D(150, 3.76), Vec2D(0, -1)))
         self.balls.append(Ball(150, Vec2D(300, 100), Vec2D(50, 50), False))
@@ -219,24 +219,25 @@ class BallToBoxCollisionTest(unittest.TestCase):
 
 
 class CalculateAngleTest(unittest.TestCase):
-    
+
     def test_angle(self):
         self.assertAlmostEqual(0, calc_angle(Vec2D(1, 0)))
-        self.assertAlmostEqual(30, calc_angle(Vec2D((3**.5)/2, .5)))
-        self.assertAlmostEqual(30, calc_angle(Vec2D((3**.5)/2, -.5)))
+        self.assertAlmostEqual(30, calc_angle(Vec2D((3**.5) / 2, .5)))
+        self.assertAlmostEqual(30, calc_angle(Vec2D((3**.5) / 2, -.5)))
         self.assertAlmostEqual(45, calc_angle(Vec2D(1, 1)))
         self.assertAlmostEqual(45, calc_angle(Vec2D(1, -1)))
-        self.assertAlmostEqual(60, calc_angle(Vec2D(.5, (3**.5)/2)))
-        self.assertAlmostEqual(60, calc_angle(Vec2D(.5, -(3**.5)/2)))
+        self.assertAlmostEqual(60, calc_angle(Vec2D(.5, (3**.5) / 2)))
+        self.assertAlmostEqual(60, calc_angle(Vec2D(.5, -(3**.5) / 2)))
         self.assertAlmostEqual(90, calc_angle(Vec2D(0, 1)))
         self.assertAlmostEqual(90, calc_angle(Vec2D(0, -1)))
-        self.assertAlmostEqual(120, calc_angle(Vec2D(-.5, (3**.5)/2)))
-        self.assertAlmostEqual(120, calc_angle(Vec2D(-.5, -(3**.5)/2)))
+        self.assertAlmostEqual(120, calc_angle(Vec2D(-.5, (3**.5) / 2)))
+        self.assertAlmostEqual(120, calc_angle(Vec2D(-.5, -(3**.5) / 2)))
         self.assertAlmostEqual(135, calc_angle(Vec2D(-1, 1)))
         self.assertAlmostEqual(135, calc_angle(Vec2D(-1, -1)))
-        self.assertAlmostEqual(150, calc_angle(Vec2D(-(3**.5)/2, .5)))
-        self.assertAlmostEqual(150, calc_angle(Vec2D(-(3**.5)/2, -.5)))
+        self.assertAlmostEqual(150, calc_angle(Vec2D(-(3**.5) / 2, .5)))
+        self.assertAlmostEqual(150, calc_angle(Vec2D(-(3**.5) / 2, -.5)))
         self.assertAlmostEqual(180, calc_angle(Vec2D(-1, 0)))
+
 
 class BoxToBoxCollisionTest(unittest.TestCase):
 
@@ -265,28 +266,28 @@ class BoxToBoxCollisionTest(unittest.TestCase):
         self.player_results.append(Vec2D(400, 115))
         self.test_boxes.append(Obstacle(Vec2D(80, 100), Vec2D(250, 115)))
         self.player_results.append(Vec2D(120, 115))
-    
+
     def tearDown(self):
         del self.box
         del self.test_boxes
         del self.player_results
-        
+
     def test_inside(self):
         for test_index in range(0, 2):
             self.assertTrue(box_to_box(self.test_boxes[test_index], self.box))
-    
+
     def test_outside(self):
         for test_index in range(2, 6):
             self.assertTrue(box_to_box(self.test_boxes[test_index], self.box))
-    
+
     def test_vertex(self):
         for test_index in range(6, 10):
             self.assertTrue(box_to_box(self.test_boxes[test_index], self.box))
-    
+
     def test_no_collision(self):
         for test_index in range(10, 13):
-            self.assertFalse(box_to_box(self.test_boxes[test_index], self.box))   
-    
+            self.assertFalse(box_to_box(self.test_boxes[test_index], self.box))
+
     def test_adjacent_edge(self):
         for test_index in range(13, 15):
             self.assertFalse(box_to_box(self.test_boxes[test_index], self.box))

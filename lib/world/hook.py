@@ -4,11 +4,14 @@ from pang.lib.world.settings import *
 from pang.lib.world.vec2d import Vec2D
 from pang.lib.world.object2d import Object2D
 
+
 class HookType:
     rope = 0
     chain = 1
 
+
 class Hook(Object2D):
+
     def __init__(self, height, position, hook_type):
         self.hook_type = hook_type
         self.to_kill = False
@@ -16,7 +19,8 @@ class Hook(Object2D):
             self.image = pygame.image.load('../graphics/HookRope.png')
         elif hook_type == HookType.chain:
             self.image = pygame.image.load('../graphics/HookChain.png')
-        Object2D.__init__(self, Vec2D(self.image.get_width(), height), position)
+        Object2D.__init__(self, Vec2D(self.image.get_width(), height),
+                          position)
         self.expand = True
         self.timer = HOOK_DURATION
 
@@ -33,9 +37,9 @@ class Hook(Object2D):
             if self.hook_type == HookType.rope:
                 self.to_kill = True
             elif self.hook_type == HookType.chain:
-                self.size += (0, self.y) #fixate size
+                self.size += (0, self.y)
                 self.position = Vec2D(self.x, 0)
                 self.expand = False
-    
+
     def draw(self, screen):
         screen.blit(self.image, self.position, ((0, 0), self.size))

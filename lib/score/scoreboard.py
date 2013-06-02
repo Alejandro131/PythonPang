@@ -4,8 +4,9 @@ from pygame.locals import *
 from pang.lib.menu.menu import Menu
 from pang.lib.world.settings import *
 
+
 class ScoreBoard:
-    
+
     def __init__(self):
         self.menu = Menu(y_position=580)
         self.music_path = '../music/Menu.wav'
@@ -16,9 +17,6 @@ class ScoreBoard:
         self.current_level = 0
         self.current_name = ''
         self.current_id = 0
-        self.dimmer_rect = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT),
-                                                  pygame.SRCALPHA, 32)
-        self.dimmer_rect.fill((0, 0, 0, 192))
         self.font = pygame.font.SysFont(None, MENU_LABEL_FONT_SIZE)
         self.text_cache = {}
 
@@ -34,30 +32,34 @@ class ScoreBoard:
                 elif event.key <= 127:
                     if len(self.current_name) < 10:
                         new_character = '' + chr(event.key)
-                        if bool(event.mod & KMOD_SHIFT) ^ bool(event.mod & KMOD_CAPS):
+                        if bool(event.mod & KMOD_SHIFT) ^\
+                           bool(event.mod & KMOD_CAPS):
                             new_character = new_character.upper()
                         self.current_name += new_character
         else:
             self.menu.process_event(event)
-    
+
     def draw(self, screen):
         if self.adding_score:
-            screen.blit(self.dimmer_rect, (0, 0))
             hscore_text = self.get_text('New High Score')
-            screen.blit(hscore_text, ((SCREEN_WIDTH-hscore_text.get_rect().width)//2, 200))
+            screen.blit(hscore_text,
+                        ((SCREEN_WIDTH-hscore_text.get_rect().width) // 2,
+                         200))
             ename_text = self.get_text('Enter Name:')
             screen.blit(ename_text, (200, 300))
-            screen.blit(self.get_text(self.current_name), (220 + ename_text.get_rect().width, 300))
+            screen.blit(self.get_text(self.current_name),
+                        (220 + ename_text.get_rect().width, 300))
         else:
             self.menu.draw(screen)
             sboard_text = self.get_text('Score Board')
-            screen.blit(sboard_text, ((SCREEN_WIDTH-sboard_text.get_rect().width)//2, 30))
+            screen.blit(sboard_text,
+                        ((SCREEN_WIDTH-sboard_text.get_rect().width) // 2, 30))
             screen.blit(self.get_text('Name'), (150, 100))
             screen.blit(self.get_text('Score'), (450, 100))
             screen.blit(self.get_text('Level'), (750, 100))
             y_pos = 150
             for index, record in enumerate(self.records):
-                screen.blit(self.get_text(str(index+1)), (100, y_pos))
+                screen.blit(self.get_text(str(index + 1)), (100, y_pos))
                 screen.blit(self.get_text(record[0]), (150, y_pos))
                 score_text = self.get_text(str(record[1]))
                 screen.blit(score_text, (450, y_pos))
@@ -82,13 +84,13 @@ class ScoreBoard:
                 self.current_name = ''
                 self.current_id = higher_scores
                 self.adding_score = True
-    
+
     def clear_scores(self):
         self.records = []
         self.save_scores()
-    
+
     def load_scores(self):
-        file_path = '../highscore/scores.pang'  
+        file_path = '../highscore/scores.pang'
         if not os.path.isfile(file_path):
             return None
         file = open(file_path, 'r')
@@ -103,11 +105,12 @@ class ScoreBoard:
                 self.records.append((name, score, level))
 
     def save_scores(self):
-        file_path = '../highscore/scores.pang'      
+        file_path = '../highscore/scores.pang'
         file = open(file_path, 'w')
         for record in self.records:
-            file.write(str(record[0]) + ' ' + str(record[1]) + ' ' + str(record[2]) + '\n')
-    
+            file.write(str(record[0]) + ' ' + str(record[1]) + ' ' +
+                       str(record[2]) + '\n')
+
     def add_score(self):
         if len(self.records) < 10:
             self.records.append((self.current_name, self.current_score,
@@ -125,7 +128,7 @@ class ScoreBoard:
 
     def get_text(self, string):
         text = self.text_cache.get(string)
-        if text == None:
+        if text is None:
             text = self.font.render(string, True, (255, 255, 255))
             self.text_cache[string] = text
         return text
