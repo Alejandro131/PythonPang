@@ -1,5 +1,5 @@
 import pygame
-from pang.settings import *
+
 from pang.vec2d import Vec2D
 from pang.object2d import Object2D
 

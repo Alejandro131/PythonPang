@@ -1,8 +1,10 @@
 import re
 import os
 import random
+
 import pygame
 from pygame.locals import *
+
 from pang.settings import *
 from pang.obstacle import Obstacle
 from pang.player import Player

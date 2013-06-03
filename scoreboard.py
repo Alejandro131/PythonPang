@@ -1,8 +1,10 @@
 import re
+
 import pygame
 from pygame.locals import *
+
 from pang.menu import Menu
-from pang.settings import *
+from pang.settings import MENU_LABEL_FONT_SIZE, SCREEN_WIDTH, MENU_LABEL_MARGIN
 
 
 class ScoreBoard:

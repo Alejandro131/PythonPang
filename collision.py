@@ -1,5 +1,5 @@
 import math
-from pang.settings import *
+
 from pang.vec2d import Vec2D
 from pang.hook import HookType
 

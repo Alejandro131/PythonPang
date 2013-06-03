@@ -1,7 +1,10 @@
 from collections import OrderedDict
+
 import pygame
 from pygame.locals import *
-from pang.settings import *
+
+from pang.settings import (MENU_LABEL_FONT_SIZE, MENU_LABEL_MARGIN,
+                           SCREEN_WIDTH, SCREEN_HEIGHT)
 from pang.vec2d import Vec2D
 
 

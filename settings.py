@@ -1,4 +1,5 @@
 import os
+
 import pygame
 
 GRAVITY = 9.8 * 10

@@ -1,19 +1,21 @@
 import os
 import re
 from datetime import datetime
+
 import pygame
 from pygame.locals import *
+
 from pang.world import World
 from pang.scoreboard import ScoreBoard
 from pang.menu import Menu
-from pang.settings import *
+from pang.settings import SCREEN_WIDTH, SCREEN_HEIGHT, GAME_SPEED, FPS
 from pang.states import StateManager
 
 
 class Game:
 
     def __init__(self):
-        #pre initiate mixer so that there isn't a delay when playing sounds
+        #pre initialize mixer so that there isn't a delay when playing sounds
         pygame.mixer.pre_init(44100, -16, 2, 2048)
         pygame.init()
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))

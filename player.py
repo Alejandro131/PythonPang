@@ -1,6 +1,8 @@
 import pygame
+
 from pang.hook import HookType
-from pang.settings import *
+from pang.settings import (SCREEN_WIDTH, SCREEN_HEIGHT, GRAVITY, PLAYER_SPEED,
+                           PLAYER_ANIM_SPEED, GAME_SPEED)
 from pang.vec2d import Vec2D
 from pang.object2d import Object2D
 

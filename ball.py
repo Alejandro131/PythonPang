@@ -1,6 +1,6 @@
 import pygame
-from pygame.locals import *
-from pang.settings import *
+
+from pang.settings import SCREEN_WIDTH, SCREEN_HEIGHT, GRAVITY
 from pang.vec2d import Vec2D
 from pang.object2d import Object2D
 
