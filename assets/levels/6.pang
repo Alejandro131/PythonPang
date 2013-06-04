@@ -1,0 +1,21 @@
+background Background.png
+
+bricktile RedTile.png
+
+music Swamp.mp3
+
+player pos 200, 300
+
+ball radius 80 pos 100, 100 force 50, 0
+ball radius 40 pos 100, 100 force 50, 0
+ball radius 20 pos 100, 100 force 50, 0
+ball radius 10 pos 100, 100 force 50, 0
+ball radius 5 pos 100, 100 force 50, 0
+ball radius 5 pos 600, 100 force 50, 0
+
+obstacle size 300, 20 pos 500, 550
+obstacle size 500, 20 pos 500, 300
+obstacle size 200, 20 pos 220, 400
+
+ladder height 300 pos 300, 400
+ladder height 250 pos 600, 300

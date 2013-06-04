@@ -1,6 +1,6 @@
 import pygame
 
-from pang.settings import SCREEN_HEIGHT, BONUS_DURATION
+from pang.settings import SCREEN_HEIGHT, BONUS_DURATION, GRAVITY
 from pang.vec2d import Vec2D
 from pang.object2d import Object2D
 

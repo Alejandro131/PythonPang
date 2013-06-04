@@ -1,7 +1,5 @@
 background LevelSwamp.png
 
-bricktile BrickTile.png
-
 music Swamp.mp3
 
 player pos 500, 643
