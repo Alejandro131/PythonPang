@@ -1,0 +1,4 @@
+level 2
+ball radius 40 pos 645, 143 force 50, 90
+player pos 500, 643 hooktype 0 maxhooks 1 force 0, 0
+world ballstimer 0 score 60 lives 3

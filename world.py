@@ -92,20 +92,12 @@ class World:
                 if result:
                     ball.calculate_force(result)
 
-        should_fall = False
-        if self.player.is_climbing:
-            should_fall = True
         self.player.can_climb = False
-
         for ladder in self.ladders:
             if player_to_ladder(self.player, ladder):
                 self.player.can_climb = True
-
-        if not self.player.can_climb and should_fall:
-            self.player.is_climbing = False
-            self.player.position += (0, 10)
-            # tova go pravim za da prilepne geroq
-            # kym platformite kato se ka4va na tqh
+                self.player.ladder_span = Vec2D(ladder.y, ladder.y +
+                                                ladder.height)
 
         if not self.player.is_climbing:
             for obstacle in self.obstacles:

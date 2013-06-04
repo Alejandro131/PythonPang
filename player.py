@@ -63,6 +63,16 @@ class Player(Object2D):
                 self.position += (0, (self.direction.y * time_passed *
                                       PLAYER_SPEED))
                 self.is_climbing = True
+                if self.y + self.height <= self.ladder_span[0]:
+                    self.position = Vec2D(self.x, self.ladder_span[0] -
+                                          self.height)
+                    self.can_climb = True
+                    self.is_climbing = False
+                elif self.y + self.height >= self.ladder_span[1]:
+                    self.position = Vec2D(self.x, self.ladder_span[1] -
+                                          self.height)
+                    self.can_climb = True
+                    self.is_climbing = False
                 self.frame_right = 0
                 self.frame_left = 0
         else:
