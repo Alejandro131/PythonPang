@@ -11,9 +11,10 @@ class BonusType:
     chain_hook = 2
     break_balls_once = 3
     break_balls_max = 4
+    invulnerability = 5
 
     def __len__(self):
-        return 5
+        return 6
 
 
 class Bonus(Object2D):
@@ -32,6 +33,8 @@ class Bonus(Object2D):
         elif bonus_type == BonusType.break_balls_max:
             self.image = pygame.image.load('assets/gfx/BonusBreak' +
                                            'BallsMax.png')
+        elif bonus_type == BonusType.invulnerability:
+            self.image = pygame.image.load('assets/gfx/BonusShield.png')
         Object2D.__init__(self, Vec2D(self.image.get_size()), position)
         self.force = Vec2D()
         self.to_kill = False

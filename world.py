@@ -92,6 +92,12 @@ class World:
                 if result:
                     ball.calculate_force(result)
 
+        if self.player.invulnerable:
+            for ball in self.balls:
+                result = ball_to_box(ball, self.player, True)
+                if result:
+                    ball.calculate_force(result)
+
         self.player.can_climb = False
         for ladder in self.ladders:
             if player_to_ladder(self.player, ladder):
@@ -198,6 +204,9 @@ class World:
                         big_ballz = True
                         self.split_ball(ball)
                         del self.balls[ball_index]
+        elif bonus.bonus_type == BonusType.invulnerability:
+            self.player.invulnerable = True
+            self.player.invulnerability_timer = INVULNERABILITY_DURATION
 
     def play_sound(self, file_name):
         sound = self.sound_library.get(file_name)

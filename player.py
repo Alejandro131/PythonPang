@@ -28,6 +28,11 @@ class Player(Object2D):
         self.last_shooting = 0
         self.can_shoot = True
         self.ladder_span = Vec2D()
+        self.invulnerability_timer = 0
+        self.invulnerable = False
+        self.invulnerability_rect = pygame.Surface((self.width, self.height),
+                                                   pygame.SRCALPHA, 32)
+        self.invulnerability_rect.fill((255, 0, 255, 192))
 
     def set_direction(self, direction):
         self.direction = direction
@@ -35,6 +40,12 @@ class Player(Object2D):
             self.last_direction = direction.x
 
     def update(self, time_passed):
+        if self.invulnerable:
+            self.invulnerability_timer -= time_passed
+            if self.invulnerability_timer <= 0:
+                self.invulnerability_timer = 0
+                self.invulnerable = False
+
         if not self.is_climbing:
             if self.y < SCREEN_HEIGHT - self.height:
                 self.force += (0, GRAVITY * time_passed)
@@ -104,4 +115,6 @@ class Player(Object2D):
                 self.can_shoot = True
 
     def draw(self, screen):
+        if self.invulnerable:
+            screen.blit(self.invulnerability_rect, self.position)
         screen.blit(self.image, self.position, self.rect)
