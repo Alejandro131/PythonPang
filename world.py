@@ -15,11 +15,12 @@ from pang.hook import *
 from pang.ladder import Ladder
 from pang.vec2d import Vec2D
 from pang.object2d import Object2D
+from pang.gui import GUIDrawer
 
 
 class World:
 
-    def __init__(self):
+    def __init__(self, screen):
         self.balls = []
         self.bonuses = []
         self.hooks = []
@@ -39,6 +40,8 @@ class World:
         self.lives = 3
         self.font = pygame.font.SysFont(None, MENU_LABEL_FONT_SIZE)
         self.game_over = False
+        self.screen = screen
+        self.gui_drawer = GUIDrawer(screen, '')
 
     def process_event(self, event):
         key = pygame.key.get_pressed()
@@ -225,16 +228,16 @@ class World:
     def draw(self, screen):
         screen.blit(self.background, (0, 0))
         for obstacle in self.obstacles:
-            obstacle.draw(screen)
+            self.gui_drawer.draw(obstacle)
         for ladder in self.ladders:
-            ladder.draw(screen)
+            self.gui_drawer.draw(ladder)
         for hook in self.hooks:
-            hook.draw(screen)
+            self.gui_drawer.draw(hook)
         self.player.draw(screen)
         for ball in self.balls:
-            ball.draw(screen)
+            self.gui_drawer.draw(ball)
         for bonus in self.bonuses:
-            bonus.draw(screen)
+            self.gui_drawer.draw(bonus)
         lives_text = self.get_text('Lives: ' + str(self.lives))
         screen.blit(lives_text, (20, 20))
         score_text = self.get_text('Score: ' + str(self.score))
@@ -285,7 +288,7 @@ class World:
                 match = re.match(obstacle_regex, line)
                 width, height, x, y = list(map(int, match.groups()))
                 self.obstacles.append(Obstacle(Vec2D(width, height),
-                                               Vec2D(x, y), tile_name))
+                                               Vec2D(x, y)))
             elif not scene_only and re.match(r'player pos (\d+), (\d+)', line):
                 match = re.match(r'player pos (\d+), (\d+)', line)
                 point_x, point_y = list(map(int, match.groups()))
@@ -305,6 +308,7 @@ class World:
             elif re.match(r'bricktile (\S+)', line):
                 match = re.match(r'bricktile (\S+)', line)
                 tile_name = list(map(str, match.groups()))[0]
+                self.gui_drawer.obstacle_image = 'assets/gfx/' + tile_name
         return True
 
     def load_game(self, file_name):

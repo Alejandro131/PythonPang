@@ -87,7 +87,7 @@ class Game:
         self.states.push(load_menu)
 
     def load_game(self, file_name):
-        world = World()
+        world = World(self.screen)
         world.load_game(file_name)
         self.states.push(world)
 
@@ -97,7 +97,7 @@ class Game:
         self.states.pop()
 
     def start_game(self):
-        world = World()
+        world = World(self.screen)
         world.load_level(1)
         self.states.push(world)
 
